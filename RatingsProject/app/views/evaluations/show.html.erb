@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @evaluation.title %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @evaluation.year %>
+</p>
+
+<p>
+  <strong>Min calification:</strong>
+  <%= @evaluation.min_calification %>
+</p>
+<%= link_to 'Edit', edit_evaluation_path(@evaluation) %> |
+<%= link_to 'Back', evaluations_path %>

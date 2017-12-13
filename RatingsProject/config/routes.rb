@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :evaluations
 	root to: 'courses#index'
 
   resources :courses
