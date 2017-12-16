@@ -20,6 +20,8 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations/1/edit
   def edit
+    @course = Course.find(params[:course_id])
+    @evaluation = Evaluation.find(params[:id])
   end
 
   # POST /evaluations
@@ -45,7 +47,7 @@ class EvaluationsController < ApplicationController
   def update
     respond_to do |format|
       if @evaluation.update(evaluation_params)
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully updated.' }
+        format.html { redirect_to @course, notice: 'Evaluation was successfully updated.' }
         format.json { render :show, status: :ok, location: @evaluation }
       else
         format.html { render :edit }
@@ -57,9 +59,11 @@ class EvaluationsController < ApplicationController
   # DELETE /evaluations/1
   # DELETE /evaluations/1.json
   def destroy
+    @course = Course.find(params[:course_id])
+    @evaluation = Evaluation.find(params[:id])
     @evaluation.destroy
     respond_to do |format|
-      format.html { redirect_to evaluations_url, notice: 'Evaluation was successfully destroyed.' }
+      format.html { redirect_to @evaluation.course, notice: 'Evaluation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

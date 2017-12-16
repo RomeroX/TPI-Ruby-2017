@@ -10,15 +10,16 @@
   <%= @course.description %>
 </p>
 
-<p> <%=link_to "Add Evaluation", new_course_evaluation_path(@course) %> | <%= link_to "Back", courses_path %> </p>
+<p> <%=link_to "Add Evaluation", new_course_evaluation_path(@course) %>  </p>
 
     <% @evaluations.each do |evaluation| %>
-      <tr>
+      <ul><tr>
         <td><%= evaluation.title %></td>
-        <td><%= link_to 'Show', course_evaluation_path(@course, evaluation) %></td>
+        <td><%= evaluation.date %></td>
+        <td><%= evaluation.min_calification %></td>
         <td><%= link_to 'Edit', edit_course_evaluation_path(@course, evaluation) %></td>
         <td><%= link_to 'Destroy', course_evaluation_path(@course, evaluation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      </ul></tr>
     <% end %>
 
 <%= link_to 'Edit', edit_course_path(@course) %> |

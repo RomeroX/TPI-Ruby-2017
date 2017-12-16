@@ -10,7 +10,7 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    @evaluations = Evaluation.select("id, title").where(:course_id => params[:id]);
+    @evaluations = Evaluation.select("id, title, date, min_calification").where(:course_id => params[:id]);
   end
 
   # GET /courses/new
