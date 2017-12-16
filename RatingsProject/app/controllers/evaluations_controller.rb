@@ -14,6 +14,7 @@ class EvaluationsController < ApplicationController
 
   # GET /evaluations/new
   def new
+    @course = Course.find(params[:course_id])
     @evaluation = Evaluation.new
   end
 
@@ -24,11 +25,13 @@ class EvaluationsController < ApplicationController
   # POST /evaluations
   # POST /evaluations.json
   def create
+  
     @evaluation = Evaluation.new(evaluation_params)
+    @evaluation.course = Course.find(params[:course_id])
 
     respond_to do |format|
       if @evaluation.save
-        format.html { redirect_to @evaluation, notice: 'Evaluation was successfully created.' }
+        format.html { redirect_to @evaluation.course, notice: 'Evaluation was successfully created.' }
         format.json { render :show, status: :created, location: @evaluation }
       else
         format.html { render :new }
@@ -69,6 +72,6 @@ class EvaluationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def evaluation_params
-      params.require(:evaluation).permit(:title, :year, :min_calification)
+      params.require(:evaluation).permit(:title, :date, :min_calification)
     end
 end

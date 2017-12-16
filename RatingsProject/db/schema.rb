@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171213014312) do
+ActiveRecord::Schema.define(version: 20171216123810) do
 
   create_table "courses", force: :cascade do |t|
     t.integer "year"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20171213014312) do
     t.integer "min_calification"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "course_id"
+    t.index ["course_id"], name: "index_evaluations_on_course_id"
   end
 
 end

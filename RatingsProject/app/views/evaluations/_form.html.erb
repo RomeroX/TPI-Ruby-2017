@@ -1,10 +1,10 @@
-<%= form_with(model: evaluation, local: true) do |form| %>
-  <% if evaluation.errors.any? %>
+<%= form_for([@course, @evaluation]) do |form| %>
+  <% if @evaluation.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(evaluation.errors.count, "error") %> prohibited this evaluation from being saved:</h2>
 
       <ul>
-      <% evaluation.errors.full_messages.each do |message| %>
+      <% @evaluation.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -17,8 +17,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :year %>
-    <%= form.text_field :year, id: :evaluation_year %>
+    <%= form.label :date %>
+    <%= form.text_field :date, id: :evaluation_date %>
   </div>
 
   <div class="field">
