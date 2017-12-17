@@ -1,26 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Year:</strong>
+
+<h4> <strong>Año</strong>
   <%= @course.year %>
-</p>
 
-<p>
-  <strong>Description:</strong>
+  <strong>Descripción:</strong>
   <%= @course.description %>
-</p>
 
-<p> <%=link_to "Add Evaluation", new_course_evaluation_path(@course) %>  </p>
+  <%= link_to 'Editar', edit_course_path(@course) %>
+</h4>
 
+<p> <%=link_to "Añadir Evaluacion", new_course_evaluation_path(@course) %>  </p>
+
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Título</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Calificación Mínima</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
     <% @evaluations.each do |evaluation| %>
-      <ul><tr>
+      <tr>
         <td><%= evaluation.title %></td>
         <td><%= evaluation.date %></td>
         <td><%= evaluation.min_calification %></td>
-        <td><%= link_to 'Edit', edit_course_evaluation_path(@course, evaluation) %></td>
-        <td><%= link_to 'Destroy', course_evaluation_path(@course, evaluation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </ul></tr>
+        <td><%= link_to 'Editar', edit_course_evaluation_path(@course, evaluation) %></td>
+        <td><%= link_to 'Eliminar', course_evaluation_path(@course, evaluation), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
+  </tbody>
+</table>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to 'Volver', courses_path %>
+
+
+

@@ -10,13 +10,14 @@
 <body>
 
  <div class="topnav" id="myTopnav">
+ <a id="title_nav"> Cursadas y Evaluaciones </a>
   <% if user_signed_in? %>
-    <a><%=current_user.email%> </a>
-    <a <%= link_to 'Editar Perfil', edit_user_registration_path, :class => 'navbar-link' %> </a>
-    <a <%= link_to "Desconectarse", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></a>
+    <a id="hov"<%= link_to "Desconectarse", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></a>
+    <a id="hov"<%= link_to 'Editar Perfil', edit_user_registration_path, :class => 'navbar-link' %> </a>
+    <a> <%=current_user.email%> </a>
   <% else %>
-    <a <%= link_to "Regístrese", new_user_registration_path, :class => 'navbar-link'  %></a>
-    <a <%= link_to "Ingresar", new_user_session_path, :class => 'navbar-link'  %></a>
+    <a id="hov"<%= link_to "Ingresar", new_user_session_path, :class => 'navbar-link'  %></a>
+    <a id="hov"<%= link_to "Regístrese", new_user_registration_path, :class => 'navbar-link' %></a>
   <% end %>
 </div> 
 
@@ -31,9 +32,5 @@
 	<%= yield %>
 </div>
 </body>
-<footer>
-  <div class="container">
-    Rating Project
-  </div>
-</footer>
+
 </html>

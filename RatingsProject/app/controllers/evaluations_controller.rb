@@ -47,7 +47,7 @@ class EvaluationsController < ApplicationController
   def update
     respond_to do |format|
       if @evaluation.update(evaluation_params)
-        format.html { redirect_to @course, notice: 'Evaluation was successfully updated.' }
+        format.html { redirect_to @evaluation.course, notice: 'Evaluation was successfully updated.' }
         format.json { render :show, status: :ok, location: @evaluation }
       else
         format.html { render :edit }
